@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dynamicDataSource.dao.PersonDao">
+
+    <select id="queryUsers" resultType="com.example.demo.dynamicDataSource.pojo.Person">
+        select * from people
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.demo.dynamicDataSource.pojo.Person">
+        insert into people values(#{id}, #{name}, #{address}, #{phone}, #{timestamp})
+    </insert>
+
+    <select id="queryUserById" resultType="com.example.demo.dynamicDataSource.pojo.Person">
+        select * from people where id = #{id}
+    </select>
+
+</mapper>
