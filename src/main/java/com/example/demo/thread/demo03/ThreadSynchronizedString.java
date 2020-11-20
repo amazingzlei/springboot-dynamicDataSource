@@ -2,6 +2,8 @@ package com.example.demo.thread.demo03;
 
 class MyService01{
     public void print(String data){
+        // 由于字符串常量池的概念，这个地方是同一个锁，因此B线程需要等待A线程，因为A线程是一个死循环，这就造成B永远得不到
+        // CPU资源，因此造成死锁
         synchronized (data){
             while(true){
                 System.out.println(Thread.currentThread().getName());

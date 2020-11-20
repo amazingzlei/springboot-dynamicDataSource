@@ -1,5 +1,8 @@
 package com.example.demo.thread.demo03;
 
+/**
+ * 死锁测试
+ */
 class DealThread implements Runnable{
 
     private String username;
