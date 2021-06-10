@@ -24,6 +24,7 @@ public class Gitlab {
     private static Integer currentTotal = 0;
 
     public static void main(String[] args) throws GitLabApiException, ExecutionException, InterruptedException, IOException {
+        Long startTime = System.currentTimeMillis();
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 16, 0,
                 TimeUnit.SECONDS, new LinkedBlockingDeque<>(10), Executors.defaultThreadFactory(),
                 new ThreadPoolExecutor.CallerRunsPolicy());
@@ -101,7 +102,6 @@ public class Gitlab {
                     fileCountTasks.add(fileCountTask);
                 }
         }
-        System.out.println(fileCountTasks.size());
         List<Future<Integer>> fileCountResult = threadPoolExecutor.invokeAll(fileCountTasks);
         for(Future<Integer> future : fileCountResult){
             currentTotal += future.get();
@@ -110,6 +110,8 @@ public class Gitlab {
 
         FileUtils.writeStringToFile(new File("E:\\result.txt"), stringBuffer.toString(), true);
         threadPoolExecutor.shutdown();
+        Long endTime = System.currentTimeMillis();
+        log.info("耗时:{}", (endTime - startTime));
     }
 
     private static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map){
