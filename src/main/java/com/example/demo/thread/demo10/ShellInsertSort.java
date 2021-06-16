@@ -11,16 +11,18 @@ public class ShellInsertSort {
         }
     }
 
-    public static void shellInsertSort2(int[] arr){
-        for(int step = arr.length/2; step >=1; step = step/2){
-            for(int i = step; i < arr.length; i++){
+    public static void shellInsertSort2(int[] arr) {
+        for (int step = arr.length / 2; step >= 1; step = step / 2) {
+            for (int i = step; i < arr.length; i++) {
+                // 要插入的值
                 int key = arr[i];
+                // 有序队列的索引
                 int j = i - step;
-                while(j >=0 && key < arr[j]){
+                while (j >= 0 && key < arr[j]) {
                     arr[j + step] = arr[j];
                     j = j - step;
                 }
-                if(j != i){
+                if (j != i) {
                     arr[j + step] = key;
                 }
             }
@@ -30,14 +32,14 @@ public class ShellInsertSort {
     public static void shellInsertSort(int[] arr) {
         for (int step = arr.length / 2; step >= 1; step = step / 2) {
             for (int i = step; i < arr.length; i++) {
+                int key = arr[i];
                 int j = i - step;
-                int tmp = arr[i];
-                while (j >= 0 && arr[j] > tmp) {
+                while (j >= 0 && key < arr[j]) {
                     arr[j + step] = arr[j];
                     j = j - step;
                 }
                 if (j != i) {
-                    arr[j + step] = tmp;
+                    arr[j + step] = key;
                 }
             }
         }

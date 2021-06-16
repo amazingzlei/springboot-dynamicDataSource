@@ -4,7 +4,6 @@ package com.example.demo.thread.demo10;
 public class BubbleSort {
 
     public static void main(String[] args) {
-//        int[] array = new int[]{98, 83, 21, 45, 78, 43, 12, 59, 63};
         int[] array = new int[]{98, 83, 21, 45, 78, 43, 12, 59, 63};
         bubbleSort(array, array.length);
         for (int a : array) {

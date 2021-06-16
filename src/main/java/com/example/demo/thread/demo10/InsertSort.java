@@ -11,9 +11,12 @@ public class InsertSort {
     }
 
     public static void sort2(int[] arr) {
+        // 无序队列从下标为1开始
         for (int i = 1; i < arr.length; i++) {
-            int j = i;
+            // 要插入的值
             int key = arr[i];
+            int j = i;
+            // 与有序队列比较
             while (j > 0 && key < arr[j - 1]) {
                 arr[j] = arr[j - 1];
                 j--;
